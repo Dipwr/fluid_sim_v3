@@ -3,4 +3,4 @@ project(fluid_sim_v3)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(fluid_sim_v3 main.cpp)
+add_executable(fluid_sim_v3 src/main.cpp)

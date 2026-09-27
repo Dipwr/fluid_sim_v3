@@ -4,16 +4,13 @@ project(fluid_sim_v3 CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Search paths for macOS Homebrew & Linux DNF system libraries
-list(APPEND CMAKE_PREFIX_PATH
-        "/opt/homebrew"
-        "/opt/homebrew/lib/cmake"
-        "/usr/local"
-        "/usr"
+include(FetchContent)
+FetchContent_Declare(
+        SFML
+        GIT_REPOSITORY https://github.com/SFML/SFML.git
+        GIT_TAG        3.0.0
 )
-
-# Find SFML 3
-find_package(SFML 3 COMPONENTS Graphics Window System REQUIRED)
+FetchContent_MakeAvailable(SFML)
 
 include_directories(include)
 

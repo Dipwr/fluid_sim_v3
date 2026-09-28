@@ -3,8 +3,9 @@
 #ifndef FLUID_SIM_V3_SIMULATION_H
 #define FLUID_SIM_V3_SIMULATION_H
 
-#include <vector>
+#include <algorithm>
 #include <cmath>
+#include <vector>
 
 enum class BoundaryType {
     INTERIOR,
@@ -20,7 +21,7 @@ struct Vec2 {
 
 struct State {
     float rho = 0.0f;
-    Vec2 rhoU{0.0f, 0.0f};
+    Vec2 rhoU = Vec2{0.0f, 0.0f};
     float E = 0.0f;
 
     Vec2 u() const { return Vec2{rhoU.x / rho, rhoU.y / rho}; }
@@ -51,11 +52,11 @@ struct Edge {
 };
 
 struct Cell {
-    float area = 0.0f;
+    float area = 1.0f;
     State state;
     State residual;
 
-    Vec2 centroid;
+    Vec2 centroid = Vec2{0.0f, 0.0f};
 };
 
 struct Mesh {
